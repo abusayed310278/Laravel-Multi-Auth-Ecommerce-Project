@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/jqvmap/dist/jqvmap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/summernote/summernote-bs4.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css')}}">
+    <link rel="stylesheet"
+          href="{{ asset('backend/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css')}}">
@@ -22,7 +25,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-94034622-3');
@@ -33,7 +40,6 @@
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
         <div class="navbar-bg"></div>
-
 
 
         @include('admin.layouts.navbar')
@@ -52,7 +58,9 @@
 
         <footer class="main-footer">
             <div class="footer-left">
-                Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+                Copyright &copy; 2018
+                <div class="bullet"></div>
+                Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
             </div>
             <div class="footer-right">
 
@@ -84,6 +92,15 @@
 <!-- Template JS File -->
 <script src="{{ asset('backend/assets/js/scripts.js')}}"></script>
 <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error("{{$error}}")
+        @endforeach
+    @endif
+</script>
 
 
 </body>
