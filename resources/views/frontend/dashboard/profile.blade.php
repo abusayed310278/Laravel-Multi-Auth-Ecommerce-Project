@@ -43,7 +43,7 @@
 
                                     </div>
                                     <div class="col-xl-12">
-                                        <button class="common_btn mb-4 mt-2" type="submit">upload</button>
+                                        <button class="common_btn mb-4 mt-2" type="submit">Save</button>
                                     </div>
                                 </form>
 
@@ -72,7 +72,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-12">
-                                                <button class="common_btn" type="submit">upload</button>
+                                                <button class="common_btn" type="submit">Save</button>
                                             </div>
                                         </div>
                                     </form>
