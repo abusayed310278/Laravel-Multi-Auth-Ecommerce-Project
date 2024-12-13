@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css">
+    <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-iconpicker.min.css')}}">
 
 
     <!-- Template CSS -->
@@ -91,6 +92,7 @@
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('backend/assets/js/page/index.js')}}"></script>
+<script src="{{asset('backend/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('backend/assets/js/scripts.js')}}"></script>
