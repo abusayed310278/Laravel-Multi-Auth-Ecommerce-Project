@@ -75,15 +75,38 @@ class ChildCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $childCategory = ChildCategory::findOrFail($id);
+        $subCategories = SubCategory::where('category_id', $childCategory->category_id)->get();
+
+        return view('admin.child-category.edit', compact('categories', 'childCategory', 'subCategories'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'category' => ['required'],
+            'sub_category' => ['required'],
+            'name' => ['required', 'max:200', 'unique:child_categories,name,'.$id],
+            'status' => ['required']
+        ]);
+
+        $childCategory = ChildCategory::findOrFail($id);
+
+        $childCategory->category_id = $request->category;
+        $childCategory->sub_category_id = $request->sub_category;
+        $childCategory->name = $request->name;
+        $childCategory->slug = Str::slug($request->name);
+        $childCategory->status = $request->status;
+        $childCategory->save();
+
+        toastr('Update Successfully!', 'success');
+
+        return redirect()->route('admin.child-category.index');
     }
 
     /**
