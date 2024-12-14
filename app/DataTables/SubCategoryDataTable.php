@@ -86,11 +86,11 @@ class SubCategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')->width(100),
             Column::make('name'),
             Column::make('slug'),
             Column::make('category'),
-            Column::make('status'),
+            Column::make('status')->width(100),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
