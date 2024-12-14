@@ -59,4 +59,31 @@
 
 @endsection
 
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('body').on('change', '.main-category', function(e){
+                let id = $(this).val();
+                $.ajax({
+                    method: 'GET',
+                    url: "{{route('admin.get-subcategories')}}",
+                    data: {
+                        id:id
+                    },
+                    success: function(data){
+                        $('.sub-category').html('<option value="">Select</option>')
+
+                        $.each(data, function(i, item){
+                            $('.sub-category').append(`<option value="${item.id}">${item.name}</option>`)
+                        })
+                    },
+                    error: function(xhr, status, error){
+                        console.log(error);
+                    }
+                })
+            })
+
+        })
+    </script>
+@endpush
 
