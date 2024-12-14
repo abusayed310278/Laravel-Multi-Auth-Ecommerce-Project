@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\ChildCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use Illuminate\Http\Request;
 
 class ChildCategoryController extends Controller
@@ -65,4 +66,15 @@ class ChildCategoryController extends Controller
     {
         //
     }
+
+
+    public function changeStatus(Request $request)
+    {
+        $category = ChildCategory::findOrFail($request->id);
+        $category->status = $request->status == 'true' ? 1 : 0;
+        $category->save();
+
+        return response(['message' => 'Status has been updated!']);
+    }
+
 }
