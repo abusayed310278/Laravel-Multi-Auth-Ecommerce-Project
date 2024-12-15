@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css">
     <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-iconpicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
 
 
     <!-- Template CSS -->
@@ -101,6 +102,7 @@
 <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
 <script>
     @if ($errors->any())
