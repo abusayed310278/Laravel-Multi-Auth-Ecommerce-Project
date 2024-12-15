@@ -6,7 +6,9 @@ use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -76,6 +78,24 @@ class ProductController extends Controller
         $product->save();
 
         return response(['message' => 'Status has been updated!']);
+    }
+
+    /**
+     * Get all product sub categores
+     */
+
+    public function getSubCategories(Request $request)
+    {
+        $subCategories = SubCategory::where('category_id', $request->id)->get();
+
+        return $subCategories;
+    }
+
+    public function getChildCategories(Request $request)
+    {
+        $childCategories = ChildCategory::where('sub_category_id', $request->id)->get();
+
+        return $childCategories;
     }
 
 
