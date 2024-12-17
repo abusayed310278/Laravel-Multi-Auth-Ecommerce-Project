@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="form-group wsus__input">
                                         <label>Description</label>
-                                        <textarea class="summernote" name="description">{{$profile?->description}}</textarea>
+                                        <textarea class="summernote" name="description">{{$profile->description}}</textarea>
                                     </div>
                                     <div class="form-group wsus__input">
                                         <label>Facebook</label>
