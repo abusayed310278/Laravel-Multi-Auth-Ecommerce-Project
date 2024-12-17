@@ -45,9 +45,9 @@ class ProductVariantItemDataTable extends DataTable
             })
             ->addColumn('is_default', function($query){
                 if($query->is_default == 1){
-                    return '<i class="badge badge-success">default</i>';
+                    return '<i class="badge badge-success">Default</i>';
                 }else {
-                    return '<i class="badge badge-danger">no</i>';
+                    return '<i class="badge badge-danger">No</i>';
                 }
             })
             ->addColumn('variant_name', function($query){
