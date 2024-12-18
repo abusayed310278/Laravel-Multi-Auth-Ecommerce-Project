@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\VendorController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\VendorProfileController;
 use App\Http\Controllers\Backend\VendorShopProfileController;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,9 @@ Route::post('profile', [VendorProfileController::class, 'updatePassword'])->name
 
 /** Vendor shop profile  */
 Route::resource('shop-profile', VendorShopProfileController::class);
+
+
+
+/** Product Routes */
+
+Route::resource('products', VendorProductController::class);

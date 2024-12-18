@@ -9411,6 +9411,11 @@ DASHBOARD CHAT END
   padding: .375rem .75rem;
 }
 
+.create_button {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
 .modal_btn input:focus {
   border-color: #ddd;
   box-shadow: none;
