@@ -103,7 +103,9 @@ class VendorProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-
+        if($product->vendor_id != Auth::user()->vendor->id){
+            abort(404);
+        }
 
         $subCategories = SubCategory::where('category_id', $product->category_id)->get();
         $childCategories = ChildCategory::where('sub_category_id', $product->sub_category_id)->get();
@@ -141,7 +143,9 @@ class VendorProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-
+        if($product->vendor_id != Auth::user()->vendor->id){
+            abort(404);
+        }
 
         /** Handle the image upload */
         $imagePath = $this->updateImage($request, 'image', 'uploads', $product->thumb_image);
