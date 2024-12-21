@@ -33,7 +33,7 @@ class VendorProductDataTable extends DataTable
                 <i class="fas fa-cog"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item has-icon" href=""> Image Gallery</a></li>
+                    <li><a class="dropdown-item has-icon" href="'.route('vendor.products-image-gallery.index', ['product' => $query->id]).'"> Image Gallery</a></li>
                     <li><a class="dropdown-item has-icon" href=""> Variants</a></li>
                 </ul>
             </div>';
@@ -91,7 +91,7 @@ class VendorProductDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->where('vendor_id',Auth::user()->vendor->id)->newQuery();
+        return $model->where('vendor_id', Auth::user()->vendor->id)->newQuery();
     }
 
     /**
@@ -126,7 +126,7 @@ class VendorProductDataTable extends DataTable
             Column::make('image')->width(150),
             Column::make('name'),
             Column::make('price'),
-            Column::make('approved'),
+//            Column::make('approved'),
             Column::make('type')->width(150),
             Column::make('status'),
             Column::computed('action')
