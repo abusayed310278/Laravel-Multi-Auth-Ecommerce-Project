@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\VendorProductVariantDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,7 @@ class VendorProductVariantController extends Controller
      */
     public function create()
     {
-        //
+        return view('vendor.product.product-variant.create');
     }
 
     /**
@@ -39,7 +40,21 @@ class VendorProductVariantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product' => ['integer', 'required'],
+            'name' => ['required', 'max:200'],
+            'status' => ['required']
+        ]);
+
+        $varinat = new ProductVariant();
+        $varinat->product_id = $request->product;
+        $varinat->name = $request->name;
+        $varinat->status = $request->status;
+        $varinat->save();
+
+        toastr('Created Successfully!', 'success', 'success');
+
+        return redirect()->route('vendor.products-variant.index', ['product' => $request->product]);
     }
 
     /**
