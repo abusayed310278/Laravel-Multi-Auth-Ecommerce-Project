@@ -70,7 +70,13 @@ class VendorProductVariantController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $variant = ProductVariant::findOrFail($id);
+        /** Check product vendor */
+//        if($variant->product->vendor_id !== Auth::user()->vendor->id){
+//            abort(404);
+//        }
+
+        return view('vendor.product.product-variant.edit', compact('variant'));
     }
 
     /**
@@ -78,7 +84,23 @@ class VendorProductVariantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:200'],
+            'status' => ['required']
+        ]);
+
+        $varinat = ProductVariant::findOrFail($id);
+        /** Check product vendor */
+//        if($varinat->product->vendor_id !== Auth::user()->vendor->id){
+//            abort(404);
+//        }
+        $varinat->name = $request->name;
+        $varinat->status = $request->status;
+        $varinat->save();
+
+        toastr('Updated Successfully!', 'success', 'success');
+
+        return redirect()->route('vendor.products-variant.index', ['product' => $varinat->product_id]);
     }
 
     /**
@@ -87,5 +109,14 @@ class VendorProductVariantController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $varinat = ProductVariant::findOrFail($request->id);
+        $varinat->status = $request->status == 'true' ? 1 : 0;
+        $varinat->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 }
