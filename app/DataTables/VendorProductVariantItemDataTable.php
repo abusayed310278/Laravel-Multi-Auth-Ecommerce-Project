@@ -25,8 +25,8 @@ class VendorProductVariantItemDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
 
-                $editBtn = "<a href='' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('vendor.products-variant-item.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('vendor.products-variant-item.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
 
                 return $editBtn.$deleteBtn;
             })
@@ -41,8 +41,8 @@ class VendorProductVariantItemDataTable extends DataTable
                 return $button;
             })
             ->addColumn('is_default', function($query){
-                if($query->is_default == 1){
-                    return '<i class="badge bg-success">Defalut</i>';
+                if($query->is_default === 1){
+                    return '<i class="badge bg-success">Default</i>';
                 }else {
                     return '<i class="badge bg-danger">No</i>';
                 }
@@ -59,7 +59,7 @@ class VendorProductVariantItemDataTable extends DataTable
      */
     public function query(ProductVariantItem $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('product_variant_id', request()->variantId)->newQuery();
     }
 
     /**
