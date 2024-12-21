@@ -3,7 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\ProductImageGallery;
-use App\Models\VendorProductImageGallery;
+
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -40,7 +40,7 @@ class VendorProductImageGalleryDataTable extends DataTable
      */
     public function query(ProductImageGallery $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('product_id', request()->product)->newQuery();
     }
 
     /**

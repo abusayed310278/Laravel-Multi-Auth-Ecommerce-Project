@@ -89,6 +89,16 @@ class VendorProductImageGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $productImage = ProductImageGallery::findOrFail($id);
+
+        /** Check product vendor */
+//        if($productImage->product->vendor_id !== Auth::user()->vendor->id){
+//            abort(404);
+//        }
+
+        $this->deleteImage($productImage->image);
+        $productImage->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }
